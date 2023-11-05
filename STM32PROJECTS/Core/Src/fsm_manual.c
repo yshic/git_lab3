@@ -1,8 +1,6 @@
-/*
- * fsm_manual.c
- *
- *  Created on: Nov 5, 2023
- *      Author: Papa
- */
+#include "fsm_manual.h"
+#include "global.h"
 
+void fsm_manual_run(){
 
+}

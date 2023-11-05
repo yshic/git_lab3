@@ -10,6 +10,7 @@
 #define AUTO_GREEN 			3
 #define AUTO_AMBER 			4
 #define AUTO_RED1_AMBER2 	5
+#define MANUAL				6
 #define RED 				0
 #define GREEN				1
 #define AMBER				2

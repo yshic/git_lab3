@@ -14,7 +14,6 @@ void fsm_automatic_run(){
 		setTimer(1000, 3);
 		counter1 = red;
 		counter2 = green;
-		updateCounterBuffer(counter1, counter2);
 		break;
 	case AUTO_RED:
 		controlTrafficLights(0, RED);
@@ -39,6 +38,9 @@ void fsm_automatic_run(){
 			counter2--;
 			setTimer(1000, 3);
 		}
+		if(isBTPressed(0) == 1){
+			status = MANUAL;
+		}
 		break;
 	case AUTO_GREEN:
 		controlTrafficLights(0, GREEN);
@@ -62,6 +64,9 @@ void fsm_automatic_run(){
 			counter1--;
 			counter2--;
 			setTimer(1000, 3);
+		}
+		if(isBTPressed(0) == 1){
+			status = MANUAL;
 		}
 		break;
 	case AUTO_AMBER:
@@ -88,6 +93,9 @@ void fsm_automatic_run(){
 			counter2--;
 			setTimer(1000, 3);
 		}
+		if(isBTPressed(0) == 1){
+			status = MANUAL;
+		}
 		break;
 	case AUTO_RED1_AMBER2:
 		controlTrafficLights(0, RED);
@@ -112,6 +120,9 @@ void fsm_automatic_run(){
 			counter1--;
 			counter2--;
 			setTimer(1000, 3);
+		}
+		if(isBTPressed(0) == 1){
+			status = MANUAL;
 		}
 		break;
 	default:
