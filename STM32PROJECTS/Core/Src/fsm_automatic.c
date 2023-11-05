@@ -6,29 +6,30 @@ void fsm_automatic_run(){
 		clearTrafficLights();
 		status = AUTO_RED;
 		setTimer(5000, 0);
+		setTimer(3000, 1);
 		break;
 	case AUTO_RED:
-		HAL_GPIO_WritePin(GPIOA, LED_RED0_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOA, LED_GREEN0_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOA, LED_AMBER0_Pin, GPIO_PIN_SET);
+		controlTrafficLights(0, RED);
+		controlTrafficLights(1, GREEN);
 		if(timer_flag[0] == 1){
 			status = AUTO_GREEN;
 			setTimer(3000, 0);
 		}
+		if(timer_flag[1] == 1){
+			controlTrafficLights(1, AMBER);
+		}
 		break;
 	case AUTO_GREEN:
-		HAL_GPIO_WritePin(GPIOA, LED_RED0_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOA, LED_GREEN0_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOA, LED_AMBER0_Pin, GPIO_PIN_SET);
+		controlTrafficLights(0, GREEN);
+		controlTrafficLights(1, RED);
 		if(timer_flag[0] == 1){
 			status = AUTO_AMBER;
 			setTimer(2000, 0);
 		}
 		break;
 	case AUTO_AMBER:
-		HAL_GPIO_WritePin(GPIOA, LED_RED0_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOA, LED_GREEN0_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOA, LED_AMBER0_Pin, GPIO_PIN_RESET);
+		controlTrafficLights(0, AMBER);
+		controlTrafficLights(1, RED);
 		if(timer_flag[0] == 1){
 			status = AUTO_RED;
 			setTimer(5000, 0);

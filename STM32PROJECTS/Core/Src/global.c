@@ -2,8 +2,8 @@
 
 int status;
 int red = 5;
-int green = 4;
-int amber = 3;
+int green = 3;
+int amber = 2;
 const int MAX_LED = 4;
 int led_buffer[4] = {0, 0, 0, 0};
 
@@ -152,6 +152,57 @@ void updateCounterBuffer(int counter1, int counter2){
 	led_buffer[1] = counter1 % 10;
 	led_buffer[2] = counter2 / 10;
 	led_buffer[3] = counter2 % 10;
+}
+
+void controlTrafficLights(int index, int color){
+//	index = 0 -> W-E Traffic light
+//  index = 1 -> N-S Traffic light
+	switch(index){
+	case 0:
+		switch(color){
+		case 0: // RED
+			HAL_GPIO_WritePin(GPIOA, LED_RED0_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, LED_GREEN0_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_AMBER0_Pin, GPIO_PIN_SET);
+			break;
+		case 1: // GREEN
+			HAL_GPIO_WritePin(GPIOA, LED_RED0_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_GREEN0_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, LED_AMBER0_Pin, GPIO_PIN_SET);
+			break;
+		case 2: // AMBER
+			HAL_GPIO_WritePin(GPIOA, LED_RED0_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_GREEN0_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_AMBER0_Pin, GPIO_PIN_RESET);
+			break;
+		default:
+			break;
+		}
+		break;
+	case 1:
+		switch(color){
+		case 0: // RED
+			HAL_GPIO_WritePin(GPIOA, LED_RED1_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, LED_GREEN1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_SET);
+			break;
+		case 1: // GREEN
+			HAL_GPIO_WritePin(GPIOA, LED_RED1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_GREEN1_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_SET);
+			break;
+		case 2: // AMBER
+			HAL_GPIO_WritePin(GPIOA, LED_RED1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_GREEN1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_RESET);
+			break;
+		default:
+			break;
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void clearTrafficLights(){

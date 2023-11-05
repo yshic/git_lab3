@@ -9,6 +9,9 @@
 #define AUTO_RED	2
 #define AUTO_GREEN 	3
 #define AUTO_AMBER 	4
+#define RED 		0
+#define GREEN		1
+#define AMBER		2
 
 extern int status;
 extern int red;
@@ -23,5 +26,5 @@ void updateCounterBuffer(int, int);
 
 //Traffic lights
 void clearTrafficLights();
-
+void controlTrafficLights(int, int);
 #endif /* INC_GLOBAL_H_ */
