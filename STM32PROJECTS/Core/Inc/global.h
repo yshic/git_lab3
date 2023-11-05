@@ -12,7 +12,10 @@
 extern int red;
 extern int green;
 extern int amber;
+extern int int led_buffer[4];
 
 void display7SEG(int);
+void update7SEG (int);
+void updateCounterBuffer(int, int);
 
 #endif /* INC_GLOBAL_H_ */
