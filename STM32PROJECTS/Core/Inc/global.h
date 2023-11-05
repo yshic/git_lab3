@@ -14,8 +14,12 @@ extern int green;
 extern int amber;
 extern int int led_buffer[4];
 
+//7segment
 void display7SEG(int);
 void update7SEG (int);
 void updateCounterBuffer(int, int);
+
+//Traffic lights
+void clearTrafficLights();
 
 #endif /* INC_GLOBAL_H_ */

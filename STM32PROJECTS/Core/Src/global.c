@@ -153,3 +153,13 @@ void updateCounterBuffer(int counter1, int counter2){
 	led_buffer[2] = counter2 / 10;
 	led_buffer[3] = counter2 % 10;
 }
+
+void clearTrafficLights(){
+	HAL_GPIO_WritePin(GPIOA, LED_RED0_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, LED_GREEN0_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, LED_AMBER0_Pin, GPIO_PIN_SET);
+
+	HAL_GPIO_WritePin(GPIOA, LED_RED1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, LED_GREEN1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_SET);
+}
