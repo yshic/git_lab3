@@ -12,7 +12,7 @@
 extern int red;
 extern int green;
 extern int amber;
-extern int int led_buffer[4];
+extern int led_buffer[4];
 
 //7segment
 void display7SEG(int);
