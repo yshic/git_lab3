@@ -1,12 +1,7 @@
-/*
- * global.h
- *
- *  Created on: Sep 28, 2023
- *      Author: KAI
- */
-
 #ifndef INC_GLOBAL_H_
 #define INC_GLOBAL_H_
+
+#include "software_timer.h"
 
 #define INIT 	1
 #define LED_ON	2

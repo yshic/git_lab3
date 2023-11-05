@@ -1,47 +1,52 @@
+#include "main.h"
 #include "button.h"
-int KeyReg0 = NORMAL_STATE;
-int KeyReg1 = NORMAL_STATE;
-int KeyReg2 = NORMAL_STATE;
-int KeyReg3 = NORMAL_STATE;
+
+uint16_t btArr[3] = {BT1_Pin, BT2_Pin, BT3_Pin};
+
+int KeyReg0[NUM_BUTTONS] = {NORMAL_STATE};
+int KeyReg1[NUM_BUTTONS] = {NORMAL_STATE};
+int KeyReg2[NUM_BUTTONS] = {NORMAL_STATE};
+int KeyReg3[NUM_BUTTONS] = {NORMAL_STATE};
 
 int TimeOutForKeyPress =  500;
-int button1_flag = 0;
+int BT_flag[NUM_BUTTONS] = {0};
 
-int isButton1Pressed(){
-	if(button1_flag == 1){
-		button1_flag = 0;
+int isBTPressed(int index){
+	if (BT_flag[index] == 1){
+		BT_flag[index] = 0;
 		return 1;
 	}
 	return 0;
 }
 
-void subKeyProcess(){
+void subKeyProcess(int index){
 	//TODO
 	//HAL_GPIO_TogglePin(LED1_GPIO_Port, LED1_Pin);
-	button1_flag = 1;
+	BT_flag[index] = 1;
 }
 
 void getKeyInput(){
-  KeyReg2 = KeyReg1;
-  KeyReg1 = KeyReg0;
-  //Add your button here
-  KeyReg0 = HAL_GPIO_ReadPin(BUTTON_GPIO_Port, BUTTON_Pin);
+	for (int i = 0; i < NUM_BUTTONS; i++){
+		KeyReg2[i] = KeyReg1[i];
+		KeyReg1[i] = KeyReg0[i];
+		//Add your button here
+		KeyReg0[i] = HAL_GPIO_ReadPin(GPIOA, btArr[i]);
 
-  if ((KeyReg1 == KeyReg0) && (KeyReg1 == KeyReg2)){
-    if (KeyReg2 != KeyReg3){
-      KeyReg3 = KeyReg2;
-
-      if (KeyReg3 == PRESSED_STATE){
-        TimeOutForKeyPress = 500;
-        subKeyProcess();
-      }
-    }else{
-       TimeOutForKeyPress --;
-        if (TimeOutForKeyPress == 0){
-        	TimeOutForKeyPress = 500;
-			subKeyProcess();
-        }
-    }
-  }
+		if ((KeyReg1[i] == KeyReg0[i]) && (KeyReg1[i] == KeyReg2[i])){
+			if (KeyReg2[i] != KeyReg3[i]){
+				KeyReg3[i] = KeyReg2[i];
+				if (KeyReg3[i] == PRESSED_STATE){
+						TimeOutForKeyPress = 500;
+						subKeyProcess(i);
+				}
+			}else{
+				TimeOutForKeyPress --;
+				if (TimeOutForKeyPress == 0){
+					TimeOutForKeyPress = 500;
+					subKeyProcess(i);
+				}
+			}
+		}
+	}
 }
 
