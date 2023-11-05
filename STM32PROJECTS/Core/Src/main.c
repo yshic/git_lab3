@@ -245,8 +245,8 @@ static void MX_GPIO_Init(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	timerRun(0);
     timerRun(1);
-//    timerRun(2);
-//    timerRun(3);
+    timerRun(2);
+    timerRun(3);
 //    timerRun(4);
 	getKeyInput();
 }

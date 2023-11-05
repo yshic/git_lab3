@@ -1,11 +1,12 @@
 #include "global.h"
 
-int status;
+int status = 0;
 int red = 5;
 int green = 3;
 int amber = 2;
 const int MAX_LED = 4;
 int led_buffer[4] = {0, 0, 0, 0};
+int index_led = 0;
 
 void display7SEG(int num){
 	// 0/RESET = ON, 1/SET = OFF
@@ -115,32 +116,32 @@ void display7SEG(int num){
 void update7SEG(int index){
 	switch(index){
 	case 0:
-		display7SEG(led_buffer[index]);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
+		display7SEG(led_buffer[index]);
 		break;
 	case 1:
-		display7SEG(led_buffer[index]);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
+		display7SEG(led_buffer[index]);
 		break;
 	case 2:
-		display7SEG(led_buffer[index]);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN2_Pin, GPIO_PIN_RESET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN3_Pin, GPIO_PIN_SET);
+		display7SEG(led_buffer[index]);
 		break;
 	case 3:
-		display7SEG(led_buffer[index]);
 		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN2_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(EN1_GPIO_Port, EN3_Pin, GPIO_PIN_RESET);
+		display7SEG(led_buffer[index]);
 		break;
 	default:
 		break;
@@ -192,9 +193,9 @@ void controlTrafficLights(int index, int color){
 			HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_SET);
 			break;
 		case 2: // AMBER
-			HAL_GPIO_WritePin(GPIOA, LED_RED1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, LED_GREEN1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(LED_AMBER1_GPIO_Port, LED_AMBER1_Pin, GPIO_PIN_RESET);
 			break;
 		default:
 			break;

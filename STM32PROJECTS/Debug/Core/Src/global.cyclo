@@ -1,4 +1,5 @@
-../Core/Src/global.c:10:6:display7SEG	11
-../Core/Src/global.c:115:6:update7SEG	5
-../Core/Src/global.c:150:6:updateCounterBuffer	1
-../Core/Src/global.c:157:6:clearTrafficLights	1
+../Core/Src/global.c:11:6:display7SEG	11
+../Core/Src/global.c:116:6:update7SEG	5
+../Core/Src/global.c:151:6:updateCounterBuffer	1
+../Core/Src/global.c:158:6:controlTrafficLights	11
+../Core/Src/global.c:209:6:clearTrafficLights	1
