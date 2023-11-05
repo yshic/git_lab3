@@ -10,7 +10,7 @@
 #define AUTO_GREEN 	3
 #define AUTO_AMBER 	4
 
-extern status;
+extern int status;
 extern int red;
 extern int green;
 extern int amber;
