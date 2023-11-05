@@ -1,0 +1,4 @@
+../Core/Src/global.c:10:6:display7SEG	16	static
+../Core/Src/global.c:115:6:update7SEG	16	static
+../Core/Src/global.c:150:6:updateCounterBuffer	16	static
+../Core/Src/global.c:157:6:clearTrafficLights	8	static
