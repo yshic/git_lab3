@@ -1,8 +1,6 @@
-/*
- * fsm_automatic.c
- *
- *  Created on: Nov 5, 2023
- *      Author: Papa
- */
+#include "fsm_automatic.h"
 
+void fsm_automatic_run(){
+
+}
 
