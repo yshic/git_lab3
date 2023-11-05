@@ -5,10 +5,12 @@
 #include "software_timer.h"
 #include "button.h"
 
-#define INIT 	1
-#define LED_ON	2
-#define LED_OFF 3
+#define INIT 		1
+#define AUTO_RED	2
+#define AUTO_GREEN 	3
+#define AUTO_AMBER 	4
 
+extern status;
 extern int red;
 extern int green;
 extern int amber;
