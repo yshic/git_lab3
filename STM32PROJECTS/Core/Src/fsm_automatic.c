@@ -8,7 +8,7 @@ void fsm_automatic_run(){
 	switch(status){
 	case INIT:
 		status = AUTO_RED;
-		setTimer(3000, 0);
+		setTimer( (red - amber) * 1000, 0);
 		setTimer(500, 1);
 		setTimer(100, 2);
 		setTimer(1000, 3);
@@ -21,7 +21,7 @@ void fsm_automatic_run(){
 		if(timer_flag[0] == 1){
 			status = AUTO_RED1_AMBER2;
 			counter2 = amber;
-			setTimer(2000, 0);
+			setTimer(amber * 1000, 0);
 		}
 		if(timer_flag[1] == 1){
 			updateCounterBuffer(counter1, counter2);
@@ -49,7 +49,7 @@ void fsm_automatic_run(){
 		if(timer_flag[0] == 1){
 			counter1 = amber;
 			status = AUTO_AMBER;
-			setTimer(2000, 0);
+			setTimer(amber * 1000, 0);
 		}
 		if(timer_flag[1] == 1){
 			updateCounterBuffer(counter1, counter2);
@@ -78,7 +78,7 @@ void fsm_automatic_run(){
 			counter1 = red;
 			counter2 = green;
 			status = AUTO_RED;
-			setTimer(5000, 0);
+			setTimer((red - amber) * 1000, 0);
 		}
 		if(timer_flag[1] == 1){
 			updateCounterBuffer(counter1, counter2);
@@ -93,6 +93,8 @@ void fsm_automatic_run(){
 		if(timer_flag[3] == 1){
 			counter1--;
 			counter2--;
+			if (counter1 == 0) counter1 = red;
+			if (counter2 == 0) counter2 = green;
 			setTimer(1000, 3);
 		}
 		if(isBTPressed(0) == 1){
@@ -107,7 +109,7 @@ void fsm_automatic_run(){
 			counter1 = green;
 			counter2 = red;
 			status = AUTO_GREEN;
-			setTimer(3000, 0);
+			setTimer(green * 1000, 0);
 		}
 		if(timer_flag[1] == 1){
 			updateCounterBuffer(counter1, counter2);

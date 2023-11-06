@@ -37,13 +37,16 @@ void getKeyInput(){
 			if (KeyReg2[i] != KeyReg3[i]){
 				KeyReg3[i] = KeyReg2[i];
 				if (KeyReg3[i] == PRESSED_STATE){
-						TimeOutForKeyPress[i] = 500;
+						TimeOutForKeyPress[i] = 200;
 						subKeyProcess(i);
 				}
 			}else{
 				TimeOutForKeyPress[i]--;
 				if (TimeOutForKeyPress[i] == 0){
-					KeyReg3[i] = NORMAL_STATE;
+					TimeOutForKeyPress[i] = 200;
+					if(KeyReg0[i] == PRESSED_STATE){
+						subKeyProcess(i);
+					}
 				}
 			}
 		}

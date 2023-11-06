@@ -81,7 +81,7 @@ void display7SEG(int num){
 		HAL_GPIO_WritePin(GPIOB, SEG_D_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOB, SEG_E_Pin, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOB, SEG_F_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOB, SEG_G_Pin, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOB, SEG_G_Pin, GPIO_PIN_SET);
 		break;
 	case 8:
 		HAL_GPIO_WritePin(GPIOB, SEG_A_Pin, GPIO_PIN_RESET);
