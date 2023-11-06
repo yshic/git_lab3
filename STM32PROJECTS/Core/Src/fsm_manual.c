@@ -19,9 +19,9 @@ void fsm_manual_run(){
 	switch(status){
 	case MANUAL_INIT:
 		status = MANUAL_RED;
-		setTimer(500, 1);
-		setTimer(100, 2);
-		setTimer(250, 4);
+		setTimer(500, 1);		//timer for updateCounterBuffer()
+		setTimer(100, 2);		//timer for update7SEG()
+		setTimer(250, 3);		//timer for led blinking
 		break;
 	case MANUAL_RED:
 		if(timer_flag[1] == 1){

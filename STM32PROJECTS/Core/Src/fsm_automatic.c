@@ -8,10 +8,10 @@ void fsm_automatic_run(){
 	switch(status){
 	case INIT:
 		status = AUTO_RED;
-		setTimer( (red - amber) * 1000, 0);
-		setTimer(500, 1);
-		setTimer(100, 2);
-		setTimer(1000, 3);
+		setTimer( (red - amber) * 1000, 0); //timer for traffic light
+		setTimer(500, 1);					//timer for updateCounterBuffer
+		setTimer(100, 2);					//timer for update7SEG
+		setTimer(1000, 3);					//timer for counter1, counter2 decrement
 		counter1 = red;
 		counter2 = green;
 		break;
