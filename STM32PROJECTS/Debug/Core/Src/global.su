@@ -3,3 +3,6 @@
 ../Core/Src/global.c:151:6:updateCounterBuffer	16	static
 ../Core/Src/global.c:158:6:controlTrafficLights	16	static
 ../Core/Src/global.c:209:6:clearTrafficLights	8	static
+../Core/Src/global.c:219:6:toggleRedLED	8	static
+../Core/Src/global.c:224:6:toggleGreenLED	8	static
+../Core/Src/global.c:229:6:toggleAmberLED	8	static

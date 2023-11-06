@@ -193,9 +193,9 @@ void controlTrafficLights(int index, int color){
 			HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_SET);
 			break;
 		case 2: // AMBER
-			HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, GPIO_PIN_SET);
-			HAL_GPIO_WritePin(LED_AMBER1_GPIO_Port, LED_AMBER1_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOA, LED_RED1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_GREEN1_Pin, GPIO_PIN_SET);
+			HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_RESET);
 			break;
 		default:
 			break;
@@ -214,4 +214,19 @@ void clearTrafficLights(){
 	HAL_GPIO_WritePin(GPIOA, LED_RED1_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOA, LED_GREEN1_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOA, LED_AMBER1_Pin, GPIO_PIN_SET);
+}
+
+void toggleRedLED(){
+	HAL_GPIO_TogglePin(GPIOA, LED_RED0_Pin);
+	HAL_GPIO_TogglePin(GPIOA, LED_RED1_Pin);
+}
+
+void toggleGreenLED(){
+	HAL_GPIO_TogglePin(GPIOA, LED_GREEN0_Pin);
+	HAL_GPIO_TogglePin(GPIOA, LED_GREEN1_Pin);
+}
+
+void toggleAmberLED(){
+	HAL_GPIO_TogglePin(GPIOA, LED_AMBER0_Pin);
+	HAL_GPIO_TogglePin(GPIOA, LED_AMBER1_Pin);
 }

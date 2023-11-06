@@ -10,7 +10,10 @@
 #define AUTO_GREEN 			3
 #define AUTO_AMBER 			4
 #define AUTO_RED1_AMBER2 	5
-#define MANUAL				6
+#define MANUAL_INIT			6
+#define MANUAL_RED			7
+#define MANUAL_GREEN		8
+#define MANUAL_AMBER		9
 #define RED 				0
 #define GREEN				1
 #define AMBER				2
@@ -31,4 +34,9 @@ void updateCounterBuffer(int, int);
 //Traffic lights
 void clearTrafficLights();
 void controlTrafficLights(int, int);
+
+//LEDS
+void toggleRedLED();
+void toggleGreenLED();
+void toggleAmberLED();
 #endif /* INC_GLOBAL_H_ */

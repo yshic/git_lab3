@@ -39,7 +39,8 @@ void fsm_automatic_run(){
 			setTimer(1000, 3);
 		}
 		if(isBTPressed(0) == 1){
-			status = MANUAL;
+			status = MANUAL_INIT;
+			clearTrafficLights();
 		}
 		break;
 	case AUTO_GREEN:
@@ -66,7 +67,8 @@ void fsm_automatic_run(){
 			setTimer(1000, 3);
 		}
 		if(isBTPressed(0) == 1){
-			status = MANUAL;
+			status = MANUAL_INIT;
+			clearTrafficLights();
 		}
 		break;
 	case AUTO_AMBER:
@@ -94,7 +96,8 @@ void fsm_automatic_run(){
 			setTimer(1000, 3);
 		}
 		if(isBTPressed(0) == 1){
-			status = MANUAL;
+			status = MANUAL_INIT;
+			clearTrafficLights();
 		}
 		break;
 	case AUTO_RED1_AMBER2:
@@ -122,7 +125,8 @@ void fsm_automatic_run(){
 			setTimer(1000, 3);
 		}
 		if(isBTPressed(0) == 1){
-			status = MANUAL;
+			status = MANUAL_INIT;
+			clearTrafficLights();
 		}
 		break;
 	default:
